@@ -1,0 +1,54 @@
+.dct-talents-pulse-wrapper {
+  display: inline-grid;
+  height: 100vh;
+  position: relative;
+  .dct-talents-pulse-home-left {
+    padding: 0;
+    background: var(--dct-talents-pulse-primary);
+    color: var(--dct-talents-pulse-white);
+    // height: 100vh;
+    .dct-talents-pulse-home-top {
+      width: 100%;
+      position: relative;
+      top: 25px;
+      left: 25px;
+      flex-wrap: wrap;
+      height: 100px;
+    }
+    .dct-talents-pulse-home-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 100px;
+      .dct-talents-pulse-home-center-title {
+        font-size: 6pc;
+        letter-spacing: 2px;
+      }
+      .dct-talents-pulse-home-center-description {
+        font-size: 38px;
+        letter-spacing: 0.8px;
+        text-decoration: overline;
+      }
+    }
+    .dct-talents-pulse-home-bottom {
+      width: 100%;
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      flex-wrap: wrap;
+      .footer-nav {
+        .footer-nav-item {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+  .dct-talents-pulse-home-right {
+    padding: 50px;
+    .dct-talents-pulse-home-cta {
+      margin: 0 30px;
+      padding: 0 50px;
+    }
+  }
+}

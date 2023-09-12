@@ -1,0 +1,206 @@
+.talents-pulse-steps-wrapper {
+  overflow: hidden;
+  //height: 100vh;
+  display: grid;
+  .talents-pulse-steps-left {
+    color: var(--dct-talents-pulse-white);
+    background: var(--dct-talents-pulse-secondary);
+    padding: 15px 20px;
+  }
+  .talents-pulse-steps-right {
+    padding: 0px;
+    .talents-pulse-steps-right-content {
+      .talents-pulse-step-resume-wrapper {
+        .talents-pulse-step-resume-textarea {
+          margin: 0 30px;
+        }
+      }
+      .talents-pulse-step-title {
+        background: var(--dct-talents-pulse-primary);
+        color: var(--dct-talents-pulse-white) !important;
+        padding: 10px 10px 10px 30px;
+      }
+      .talents-pulse-step-skills-wrapper {
+        .talents-pulse-step-skills-container {
+          margin: 0 30px;
+        }
+        .talents-pulse-btn-add {
+          margin: 0 30px;
+        }
+      }
+      .talents-pulse-step-projects-wrapper {
+        .talents-pulse-step-projects-container {
+          margin: 0 30px;
+        }
+        .talents-pulse-btn-add {
+          margin: 0 30px;
+        }
+      }
+      .talents-pulse-step-projects-detail-wrapper {
+        .talents-pulse-step-projects-detail-container {
+          margin: 0 30px;
+        }
+        .talents-pulse-btn-add {
+          margin: 0 30px;
+        }
+        .talents-pulse-step-projects-detail-form {
+          .dct-talents-pulse-form-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .talents-pulse-step-projects-detail-achievements {
+          .talents-pulse-step-projects-detail-achievement {
+            display: flex;
+            //align-items: start;
+            //justify-content: space-between;
+            &::before {
+              content: "▪";
+            }
+            .talents-pulse-step-project-detail-achievement-item {
+              left: 15px;
+              position: relative;
+              display: inline-flex;
+              .talents-pulse-step-project-detail-achievement-item-container {
+                display: contents;
+              }
+            }
+          }
+        }
+        .talents-pulse-step-projects-detail-environement {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+
+          .talents-pulse-step-projects-detail-environement-item,
+          button,
+          input {
+            left: 10px;
+            position: relative;
+          }
+        }
+      }
+      .talents-pulse-step-formations-wrapper {
+        .talents-pulse-step-formations-container {
+          margin: 0 30px;
+        }
+        .talents-pulse-btn-add {
+          margin: 0 30px;
+        }
+      }
+      .talents-pulse-step-linguistics-wrapper {
+        .talents-pulse-step-linguistics-container {
+          margin: 0 30px;
+        }
+        .talents-pulse-btn-add {
+          margin: 0 30px;
+        }
+      }
+      .talents-pulse-step-summary-wrapper {
+        .talents-pulse-step-summary-container {
+          margin: 0 30px;
+          .talents-pulse-step-summary-user {
+            color: var(--dct-talents-pulse-secondary);
+            margin: 0;
+            font-weight: 600;
+            font-size: 38px;
+            text-transform: capitalize;
+          }
+          .talents-pulse-step-summary-profession {
+            color: var(--dct-talents-pulse-secondary);
+            margin: 0;
+            font-weight: 500;
+            font-size: 32px;
+            text-transform: capitalize;
+          }
+          .talents-pulse-step-summary-matricule {
+            text-transform: uppercase;
+            color: var(--dct-talents-pulse-secondary);
+            font-size: 42px;
+            font-weight: 600;
+            margin: 0;
+          }
+          .talents-pulse-step-summary-experience-year {
+            color: var(--dct-talents-pulse-secondary);
+            margin: 0;
+            font-weight: 500;
+            font-size: 28px;
+          }
+          .talents-pulse-step-summary-header {
+            text-align: center;
+            color: var(--dct-talents-pulse-white);
+            background: var(--dct-talents-pulse-primary);
+            padding: 10px;
+          }
+        }
+      }
+    }
+    .talents-pulse-steps-right-cta {
+      margin: 0px 0px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.talents-pulse-step-header {
+  color: var(--dct-talents-pulse-white);
+  background: var(--dct-talents-pulse-primary);
+  padding: 10px 0;
+}
+
+.talents-pulse-step-skill-content {
+  &::before {
+    content: "-";
+  }
+  .talents-pulse-step-skill-item {
+    left: 15px;
+    position: relative;
+  }
+}
+
+.talents-pulse-step-project-project,
+.talents-pulse-step-project-sector,
+.talents-pulse-step-project-customer {
+  &::before {
+    content: "●";
+    color: var(--dct-talents-pulse-success);
+    opacity: 0.6;
+  }
+  .talents-pulse-step-project-item {
+    left: 15px;
+    position: relative;
+    font-size: 18px;
+  }
+}
+
+.talents-pulse-step-projects-detail-achievements {
+  .talents-pulse-step-projects-detail-achievement {
+    display: flex;
+    //align-items: start;
+    //justify-content: space-between;
+    &::before {
+      content: "-";
+    }
+    .talents-pulse-step-project-detail-achievement-item {
+      left: 15px;
+      position: relative;
+      display: inline-flex;
+      .talents-pulse-step-project-detail-achievement-item-container {
+        display: contents;
+      }
+      .talents-pulse-step-project-detail-achievement-cta {
+        display: flex;
+        .talents-pulse-step-project-detail-achievement-cta-item {
+          margin: 0px 5px;
+        }
+      }
+    }
+  }
+}
+
+.talents-pulse-step-projects-detail-environement-container-tag {
+  display: contents;
+}

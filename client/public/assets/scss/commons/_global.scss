@@ -1,0 +1,9 @@
+// Scrollbar
+::-webkit-scrollbar-thumb {
+  background-color: var(--dct-talents-pulse-default);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}

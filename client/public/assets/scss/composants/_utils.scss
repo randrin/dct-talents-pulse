@@ -1,0 +1,137 @@
+.dct-talents-pulse-cursor-pointer {
+  cursor: pointer;
+}
+.dct-talents-pulse-display-none {
+  display: none !important;
+}
+.dct-talents-pulse-without-margin {
+  margin: 0 !important;
+}
+.dct-talents-pulse-without-padding {
+  padding: 0 !important;
+}
+.dct-talents-pulse-field-required {
+  color: var(--dct-talents-pulse-danger);
+  font-weight: 500;
+  left: 5px;
+  position: relative;
+}
+.dct-talents-pulse-profile-img {
+  display: grid;
+  .dct-talents-pulse-btn-upload {
+    text-align: center;
+    top: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.dct-talents-pulse-btn-remove-image {
+  .ant-badge-count {
+    margin: 15px;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.dct-talents-pulse-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dct-talents-pulse-space-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dct-talents-pulse-horizontal-divider {
+  border-left: 0.1rem solid var(--dct-talents-pulse-sliver);
+  width: 0;
+  margin: 0.5rem 6.4rem;
+}
+
+.dct-talents-pulse-text-underline {
+  text-decoration: underline !important;
+}
+
+.dct-talents-pulse-not-text-underline {
+  text-decoration: none !important;
+}
+
+.dct-talents-pulse-background-animation {
+  background: linear-gradient(
+    -45deg,
+    var(--dct-talents-pulse-primary),
+    var(--dct-talents-pulse-secondary),
+    var(--dct-talents-pulse-sliver),
+    var(--dct-talents-pulse-default)
+  );
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+.dct-talents-pulse-space-between {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.dct-talents-pulse-space-end {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.dct-talents-pulse-space-start {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.dct-talents-pulse-typography {
+  margin-bottom: 0.25em !important;
+}
+
+.dct-divider-horizontal {
+  margin: 10px 0 20px !important;
+}
+
+.dct-talents-pulse-steps-form {
+  border: 1px solid var(--dct-talents-pulse-sliver);
+  box-shadow: var(--dct-talents-pulse-box-shadow);
+  border-radius: var(--dct-talents-pulse-border-radius-one);
+  padding: 20px;
+  margin: 0 30px;
+}
+
+.dct-talents-pulse-title {
+  font-size: 18px !important;
+}
+
+// Bootstrap
+.d-grid {
+  display: grid !important;
+}
+
+.dct-talents-pulse-cta-action {
+  background-color: var(--dct-talents-pulse-white);
+  border-radius: 21px;
+  padding: 5px;
+}
+
+.dct-talents-pulse-btn-bottom {
+  bottom: 15px;
+  position: absolute;
+}
+
+.dct-talents-pulse-text-center {
+  text-align: center;
+  .ant-input {
+    text-align: center !important;
+  }
+}

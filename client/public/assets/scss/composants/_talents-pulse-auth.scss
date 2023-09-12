@@ -1,0 +1,14 @@
+.dct-talents-pulse-form {
+  margin: 50px;
+  padding: 70px;
+  border-radius: var(--dct-talents-pulse-border-radius-one);
+  box-shadow: var(--dct-talents-pulse-box-shadow);
+  background: var(--dct-talents-pulse-white);
+  .dct-talents-pulse-forgot-password {
+    float: right;
+    font-weight: 600;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

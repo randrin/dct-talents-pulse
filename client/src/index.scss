@@ -1,0 +1,39 @@
+@import "../public/assets/scss/_dct-talents-pulse-global-styles";
+@import "~antd/dist/reset.css";
+
+.talents-pulse-step-projects-detail-accordion-wrapper {
+  .talents-pulse-step-projects-detail-accordion-top {
+    &::after {
+      border-bottom: 1px solid;
+    }
+    .talents-pulse-container-standard-title {
+      max-width: fit-content;
+    }
+  }
+}
+
+* {
+  font-family: Calibri, sans-serif !important;
+}
+
+.talents-pulse-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.talents-pulse-td,
+.talents-pulse-th {
+  border: 1px solid var(--dct-talents-pulse-sliver);
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  color: var(--dct-talents-pulse-white);
+  background: var(--dct-talents-pulse-secondary);
+}
+
+.talents-pulse-standard-title {
+  font-size: 18px !important;
+}

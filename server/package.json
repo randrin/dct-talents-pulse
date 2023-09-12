@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Application de génération des dct des collaborateurs",
   "main": "index.js",
-  "type": "module",
+
   "scripts": {
     "start": "nodemon -r esm --exec node --experimental-json-modules index.js"
   },

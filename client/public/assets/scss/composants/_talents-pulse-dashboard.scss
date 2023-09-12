@@ -1,0 +1,51 @@
+.dct-dashboard-layout-wrapper {
+  //width: 100%;
+  //height: 100vh;
+  //position: relative;
+  .dct-dashboard-sider {
+    .ant-layout-sider-children {
+      position: fixed;
+      width: inherit;
+    }
+  }
+  .dct-logo {
+    background: var(--dct-talents-pulse-white);
+    padding: 7px;
+    .dct-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 80%;
+      }
+      .dct-logo-small {
+        width: 100%;
+        height: 40px;
+      }
+    }
+  }
+  .dct-navigation {
+    top: 30px;
+    position: relative;
+  }
+  .dct-dashboard-layout {
+    display: inline-table;
+    height: 100vh;
+    .dct-dashboard-layout-header {
+      display: flex;
+      .dct-dashboard-layout-header-progress {
+        width: 150px;
+        line-height: 24px;
+        top: 5px;
+        position: relative;
+      }
+      .dct-dashboard-layout-header-profile {
+        float: right;
+        right: 30px;
+        position: relative;
+        display: flex;
+        cursor: pointer;
+      }
+    }
+  }
+}
