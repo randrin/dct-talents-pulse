@@ -8,10 +8,12 @@ import config from "../config/index.js";
 import {
   ACTIVITY_CREATE_DCT,
   DCT_ACTION_DESCRIPTION,
+  DCT_ACTION_DESCRIPTION_SALARY,
   DCT_ACTION_FORMATIONS,
   DCT_ACTION_LINGUISTICS,
   DCT_ACTION_PROJECTS,
   DCT_ACTION_PROJECTS_DETAIL,
+  DCT_ACTION_SALARY,
   DCT_ACTION_SKILLS,
   DCT_ACTION_TECNICAL_SKILLS,
   STATUS_ACTIVE,
@@ -173,6 +175,8 @@ export const dctUpdate = async (req, res) => {
     const {
       dctId,
       description,
+      salaryType,
+      salaryRange,
       formations,
       projects,
       skills,
@@ -205,6 +209,21 @@ export const dctUpdate = async (req, res) => {
         if (type === DCT_ACTION_DESCRIPTION) {
           updatedFields = {
             description,
+          };
+        }
+
+        if (type === DCT_ACTION_SALARY) {
+          updatedFields = {
+            salaryType,
+            salaryRange
+          };
+        }
+
+        if (type === DCT_ACTION_DESCRIPTION_SALARY) {
+          updatedFields = {
+            description,
+            salaryType,
+            salaryRange
           };
         }
 

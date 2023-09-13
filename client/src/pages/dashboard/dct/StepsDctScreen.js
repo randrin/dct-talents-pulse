@@ -35,6 +35,8 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
     dctId: "",
     expertise: "",
     description: "",
+    salaryType: "",
+    salaryRange: [0, 0],
     skills: [],
     projects: [],
     projectsDetail: [],
@@ -207,6 +209,16 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
 
   const handleOnChangeDct = (e) => {
     setDct({ ...dct, [e.target.name]: e.target.value });
+  };
+
+  const handleOnChangeStepOneSalary = (e, element) => {
+    if(element === "type") {
+      setDct({ ...dct, salaryType: e });
+    } else {
+      setDct({ ...dct, salaryRange: e });
+    }
+   
+    console.log(dct);
   };
 
   const handleOnChangeStepTwo = (e) => {
@@ -405,6 +417,7 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
                     dct={dct}
                     setDct={setDct}
                     handleOnChangeStepOne={handleOnChangeDct}
+                    handleOnChangeStepOneSalary={handleOnChangeStepOneSalary}
                     title={steps[current]?.title}
                   />
                 )}

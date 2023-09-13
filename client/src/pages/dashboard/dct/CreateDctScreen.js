@@ -308,7 +308,7 @@ const CreateDctScreen = () => {
     }, 1000);
   };
 
-  const handelOnDeleteDct = async() => {
+  const handelOnDeleteDct = async () => {
     setLoading(true);
     setDctContinue(false);
     await activityDelete(
@@ -383,11 +383,14 @@ const CreateDctScreen = () => {
             </div>
           ) : (
             <div className="dct-talents-pulse-form col-md-8 dct-talents-pulse-home-right">
-              <Title level={2} className="dct-talents-pulse-secondary text-left">
+              <Title
+                level={2}
+                className="dct-talents-pulse-secondary text-left"
+              >
                 Informations Personnelles
               </Title>
-              <Divider className="dct-talents-pulse-background-sliver" />
-              <div className="row mt-5 mb-2">
+              <Divider className="dct-talents-pulse-background-sliver dct-talents-pulse-without-margin" />
+              <div className="row mt-4 mb-2">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="gender">
                     Civilité
@@ -409,7 +412,8 @@ const CreateDctScreen = () => {
               <div className="row mb-4">
                 <div className="col-md-6">
                   <label htmlFor="lastName">
-                    Prénom <span className="dct-talents-pulse-field-required">*</span>
+                    Prénom{" "}
+                    <span className="dct-talents-pulse-field-required">*</span>
                   </label>
                   <Input
                     size="large"
@@ -427,7 +431,8 @@ const CreateDctScreen = () => {
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="firstName">
-                    Nom <span className="dct-talents-pulse-field-required">*</span>
+                    Nom{" "}
+                    <span className="dct-talents-pulse-field-required">*</span>
                   </label>
                   <Input
                     size="large"
@@ -447,7 +452,8 @@ const CreateDctScreen = () => {
               <div className="row mb-4">
                 <div className="col-md-5">
                   <label htmlFor="email">
-                    Email <span className="dct-talents-pulse-field-required">*</span>
+                    Email{" "}
+                    <span className="dct-talents-pulse-field-required">*</span>
                   </label>
                   <Input
                     size="large"
@@ -515,11 +521,14 @@ const CreateDctScreen = () => {
                   </Select>
                 </div>
               </div>
-              <Title level={2} className="dct-talents-pulse-secondary text-left">
+              <Title
+                level={2}
+                className="dct-talents-pulse-secondary text-left"
+              >
                 Informations Professionnelles
               </Title>
-              <Divider className="dct-talents-pulse-background-sliver" />
-              <div className="row mb-4">
+              <Divider className="dct-talents-pulse-background-sliver dct-talents-pulse-without-margin" />
+              <div className="row mb-4 mt-4">
                 <div className="col-md-6">
                   <label htmlFor="sector">
                     Pôle de compétences

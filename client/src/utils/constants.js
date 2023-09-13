@@ -41,8 +41,12 @@ export const STATUS = [
   { id: 3, name: STATUS_DISABLED, icon: <CloseCircleOutlined className="dct-talents-pulse-danger" /> },
   { id: 4, name: STATUS_SUSPENDED, icon: <StopOutlined className="dct-talents-pulse-tomato" /> },
 ];
+export const MONTH = "Month";
+export const YEAR = "Year";
 
 export const DCT_ACTION_DESCRIPTION = "description";
+export const DCT_ACTION_SALARY = "salary";
+export const DCT_ACTION_DESCRIPTION_SALARY = "description-salary";
 export const DCT_ACTION_SKILLS = "skills";
 export const DCT_ACTION_PROJECTS = "projects";
 export const DCT_ACTION_PROJECTS_DETAIL = "projects-detail";

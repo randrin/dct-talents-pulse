@@ -4,6 +4,8 @@ export const ROLE_CANDIDATE = "candidate";
 export const ROLE_CUSTOMER = "customer";
 export const DEFAULT_PASSWORD = "Enexse@1234*";
 export const DCT_ACTION_DESCRIPTION = "description";
+export const DCT_ACTION_SALARY = "salary";
+export const DCT_ACTION_DESCRIPTION_SALARY = "description-salary";
 export const DCT_ACTION_SKILLS = "skills";
 export const DCT_ACTION_PROJECTS = "projects";
 export const DCT_ACTION_PROJECTS_DETAIL = "projects-detail";
@@ -17,6 +19,8 @@ export const STATUS_SUSPENDED = "Suspended";
 export const GENDER_MALE = "Male";
 export const GENDER_FEMALE = "Female";
 export const ACTIVITY_CREATE_DCT = "ACTIVITY_CREATE_DCT";
+export const MONTH = "Month";
+export const YEAR = "Year";
 
 export const PROVIDER_PASSWORD = "email/password";
 export const PROVIDER_GOOGLE = "google";

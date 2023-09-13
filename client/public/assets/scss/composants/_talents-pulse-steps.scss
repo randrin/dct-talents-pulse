@@ -127,6 +127,13 @@
             font-weight: 500;
             font-size: 28px;
           }
+          .talents-pulse-step-summary-salary {
+            color: var(--dct-talents-pulse-secondary);
+            margin: 0;
+            font-weight: 500;
+            font-size: 18px;
+            font-style: italic;
+          }
           .talents-pulse-step-summary-header {
             text-align: center;
             color: var(--dct-talents-pulse-white);
@@ -153,11 +160,11 @@
 
 .talents-pulse-step-skill-content {
   &::before {
-    content: "-";
+    //content: "-";
   }
   .talents-pulse-step-skill-item {
-    left: 15px;
-    position: relative;
+    //left: 15px;
+    //position: relative;
   }
 }
 

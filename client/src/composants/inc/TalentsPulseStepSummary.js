@@ -4,12 +4,9 @@ import TalentsPulseStepFourthDetail from "../details/TalentsPulseStepFourthDetai
 import TalentsPulseStepSevenDetail from "../details/TalentsPulseStepSevenDetail";
 import TalentsPulseStepTwoDetail from "../details/TalentsPulseStepTwoDetail";
 import TalentsPulseNextPreviousStep from "./TalentsPulseNextPreviousStep";
-import {
-  Collapse,
-  Divider,
-  Typography,
-} from "antd";
+import { Collapse, Divider, Typography } from "antd";
 import TalentsPulseEmptyDataSummary from "./TalentsPulseEmptyDataSummary";
+import { MONTH } from "../../utils/constants";
 
 const TalentsPulseStepSummary = ({
   dct,
@@ -55,6 +52,13 @@ const TalentsPulseStepSummary = ({
           <Paragraph className="talents-pulse-step-summary-experience-year">
             {dct?.expNumber} ans d'expériences
           </Paragraph>
+          {!!dct?.salaryRange?.length && (
+            <Paragraph className="talents-pulse-step-summary-salary">
+              {dct?.salaryType === MONTH
+                ? `Entre ${dct?.salaryRange[0]}00€ - ${dct?.salaryRange[1]}00€ net par mois`
+                : `Entre ${dct?.salaryRange[0]}K€ - ${dct?.salaryRange[1]}K€ brut par an`}
+            </Paragraph>
+          )}
         </div>
         <div className="col-md-12 font-weight-bold talents-pulse-standard-title talents-pulse-step-summary-header">
           MOTIVATION

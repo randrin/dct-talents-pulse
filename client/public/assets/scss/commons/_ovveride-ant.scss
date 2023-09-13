@@ -233,3 +233,10 @@ label,
     font-weight: 600;
   }
 }
+
+.ant-divider-horizontal.ant-divider-with-text-left.dct-talents-pulse-secondary {
+  &::before,
+  &::after {
+    background: var(--dct-talents-pulse-secondary) !important;
+  }
+}

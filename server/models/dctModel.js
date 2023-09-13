@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MONTH } from "../utils/constantsUtils";
 const { ObjectId } = mongoose.Schema;
 
 const dctSchema = new mongoose.Schema(
@@ -21,6 +22,8 @@ const dctSchema = new mongoose.Schema(
     nationality: { type: String, trim: true },
     expNumber: { type: Number, trim: true },
     description: { type: String, trim: true, default: "" },
+    salaryType: { type: String, trim: true, default: MONTH },
+    salaryRange: { type: Array, trim: true },
     skills: { type: Array, default: [] },
     projects: { type: Array, default: [] },
     projectsDetail: {
