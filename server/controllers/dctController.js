@@ -16,6 +16,7 @@ import {
   DCT_ACTION_SALARY,
   DCT_ACTION_SKILLS,
   DCT_ACTION_TECNICAL_SKILLS,
+  MONTH,
   STATUS_ACTIVE,
 } from "../utils/constantsUtils.js";
 import fs from "fs";
@@ -215,7 +216,7 @@ export const dctUpdate = async (req, res) => {
         if (type === DCT_ACTION_SALARY) {
           updatedFields = {
             salaryType,
-            salaryRange
+            salaryRange,
           };
         }
 
@@ -223,7 +224,7 @@ export const dctUpdate = async (req, res) => {
           updatedFields = {
             description,
             salaryType,
-            salaryRange
+            salaryRange,
           };
         }
 
@@ -371,7 +372,7 @@ export const dctDownload = async (req, res) => {
   try {
     const dctId = req.params._id;
     let dct = await Dct.findOne({ _id: dctId }).populate("expertise user");
-
+console.log(dct);
     if (dct) {
       let projectsDetailFormat = dct.projectsDetail.map((project) => ({
         ...project,
@@ -382,12 +383,16 @@ export const dctDownload = async (req, res) => {
           : false,
         showProjectTitle: !!project.projectTitle.length ? true : false,
       }));
+      let salaryFormat = dct.salaryType === MONTH
+      ? `Entre ${dct.salaryRange[0]}00€ - ${dct.salaryRange[1]}00€ net par mois`
+      : `Entre ${dct.salaryRange[0]}K€ - ${dct.salaryRange[1]}K€ brut par an`;
       const data = {
         lastName: dct.user.lastName,
         firstName: dct.user.firstName,
         profession: dct.expertise.name.toUpperCase(),
         matricule: dct.matricule,
         expNumber: dct.expNumber,
+        salary: salaryFormat,
         description: dct.description,
         skills: dct.skills,
         projects: dct.projects,
@@ -399,6 +404,7 @@ export const dctDownload = async (req, res) => {
       const handler = new TemplateHandler();
       const doc = await handler.process(templateFile, data);
 
+      console.log(data);
       return res
         .status(200)
         .json({ doc, dct, message: "DCT downloaded successfully." });

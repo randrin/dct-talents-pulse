@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { MONTH } from "../utils/constantsUtils";
+import { MONTH } from "../utils/constantsUtils.js";
 const { ObjectId } = mongoose.Schema;
 
 const dctSchema = new mongoose.Schema(
