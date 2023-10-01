@@ -443,6 +443,7 @@ const ExpertisesScreen = () => {
                 Background Color{" "}
                 <span className="dct-talents-pulse-field-required">*</span>
               </label>
+              <br />
               <ColorPicker
                 format={formatRgb}
                 value={colorRgb}

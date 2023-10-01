@@ -212,12 +212,13 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
   };
 
   const handleOnChangeStepOneSalary = (e, element) => {
-    if(element === "type") {
+    if (element === "type") {
       setDct({ ...dct, salaryType: e });
     } else {
-      setDct({ ...dct, salaryRange: e });
+      element === "range"
+        ? setDct({ ...dct, salaryRange: e })
+        : setDct({ ...dct, salaryHour: e });
     }
-   
     console.log(dct);
   };
 

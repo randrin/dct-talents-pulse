@@ -58,6 +58,7 @@ const WidgetBarScreen = ({ sectors, dcts }) => {
     "Juillet",
     "Août",
     "Septembre",
+    "Octobre",
     "Novembre",
     "Décembre",
   ];

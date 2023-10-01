@@ -6,7 +6,7 @@ import TalentsPulseStepTwoDetail from "../details/TalentsPulseStepTwoDetail";
 import TalentsPulseNextPreviousStep from "./TalentsPulseNextPreviousStep";
 import { Collapse, Divider, Typography } from "antd";
 import TalentsPulseEmptyDataSummary from "./TalentsPulseEmptyDataSummary";
-import { MONTH } from "../../utils/constants";
+import { HOUR, MONTH } from "../../utils/constants";
 
 const TalentsPulseStepSummary = ({
   dct,
@@ -54,7 +54,9 @@ const TalentsPulseStepSummary = ({
           </Paragraph>
           {!!dct?.salaryRange?.length && (
             <Paragraph className="talents-pulse-step-summary-salary">
-              {dct?.salaryType === MONTH
+              {dct?.salaryType === HOUR
+                ? `${dct?.salaryHour}€/heure`
+                : dct?.salaryType === MONTH
                 ? `Entre ${dct?.salaryRange[0]}00€ - ${dct?.salaryRange[1]}00€ net par mois`
                 : `Entre ${dct?.salaryRange[0]}K€ - ${dct?.salaryRange[1]}K€ brut par an`}
             </Paragraph>

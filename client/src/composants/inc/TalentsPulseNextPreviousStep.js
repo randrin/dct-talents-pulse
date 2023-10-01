@@ -30,10 +30,8 @@ const TalentsPulseNextPreviousStep = ({
     dctId,
     description,
     skills,
-    projects,
     projectsDetail,
     formations,
-    tecnicalSkills,
     linguistics,
     matricule,
   } = dct;

@@ -17,6 +17,7 @@ import {
   DCT_ACTION_SKILLS,
   DCT_ACTION_TECNICAL_SKILLS,
   MONTH,
+  HOUR,
   STATUS_ACTIVE,
 } from "../utils/constantsUtils.js";
 import fs from "fs";
@@ -176,6 +177,7 @@ export const dctUpdate = async (req, res) => {
     const {
       dctId,
       description,
+      salaryHour,
       salaryType,
       salaryRange,
       formations,
@@ -217,6 +219,7 @@ export const dctUpdate = async (req, res) => {
           updatedFields = {
             salaryType,
             salaryRange,
+            salaryHour,
           };
         }
 
@@ -225,6 +228,7 @@ export const dctUpdate = async (req, res) => {
             description,
             salaryType,
             salaryRange,
+            salaryHour,
           };
         }
 
@@ -282,10 +286,8 @@ export const dctUpdate = async (req, res) => {
             if (
               !!dct.description.length &&
               !!dct.skills.length &&
-              !!dct.projects.length &&
               !!dct.projectsDetail.length &&
               !!dct.formations.length &&
-              !!dct.tecnicalSkills.length &&
               !!dct.linguistics.length
             )
               activity.remove();
@@ -372,7 +374,6 @@ export const dctDownload = async (req, res) => {
   try {
     const dctId = req.params._id;
     let dct = await Dct.findOne({ _id: dctId }).populate("expertise user");
-console.log(dct);
     if (dct) {
       let projectsDetailFormat = dct.projectsDetail.map((project) => ({
         ...project,
@@ -383,9 +384,12 @@ console.log(dct);
           : false,
         showProjectTitle: !!project.projectTitle.length ? true : false,
       }));
-      let salaryFormat = dct.salaryType === MONTH
-      ? `Entre ${dct.salaryRange[0]}00€ - ${dct.salaryRange[1]}00€ net par mois`
-      : `Entre ${dct.salaryRange[0]}K€ - ${dct.salaryRange[1]}K€ brut par an`;
+      let salaryFormat =
+        dct.salaryType === HOUR
+          ? `${dct.salaryHour}€/heure`
+          : dct.salaryType === MONTH
+          ? `Entre ${dct.salaryRange[0]}00€ - ${dct.salaryRange[1]}00€ net par mois`
+          : `Entre ${dct.salaryRange[0]}K€ - ${dct.salaryRange[1]}K€ brut par an`;
       const data = {
         lastName: dct.user.lastName,
         firstName: dct.user.firstName,

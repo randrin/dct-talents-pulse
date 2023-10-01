@@ -21,6 +21,7 @@ export const GENDER_FEMALE = "Female";
 export const ACTIVITY_CREATE_DCT = "ACTIVITY_CREATE_DCT";
 export const MONTH = "Month";
 export const YEAR = "Year";
+export const HOUR = "Hour";
 
 export const PROVIDER_PASSWORD = "email/password";
 export const PROVIDER_GOOGLE = "google";

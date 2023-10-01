@@ -24,6 +24,7 @@ const dctSchema = new mongoose.Schema(
     description: { type: String, trim: true, default: "" },
     salaryType: { type: String, trim: true, default: MONTH },
     salaryRange: { type: Array, trim: true },
+    salaryHour: { type: String, trim: true },
     skills: { type: Array, default: [] },
     projects: { type: Array, default: [] },
     projectsDetail: {

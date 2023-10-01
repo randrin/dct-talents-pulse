@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Input,
+  InputNumber,
   Select,
   Slider,
   Spin,
@@ -16,6 +17,7 @@ import { talentsPulseGetToken } from "../../utils";
 import {
   DCT_ACTION_DESCRIPTION,
   DCT_ACTION_SALARY,
+  HOUR,
   MONTH,
   YEAR,
 } from "../../utils/constants";
@@ -65,7 +67,8 @@ const TalentsPulseStepOne = ({
   };
 
   const handleOnValidateSalary = () => {
-    return !!dct?.salaryType?.length && !!dct?.salaryRange?.length
+    return !!dct?.salaryType?.length &&
+      (!!dct?.salaryRange?.length || !!dct?.salaryHour?.length)
       ? false
       : true;
   };
@@ -175,7 +178,7 @@ const TalentsPulseStepOne = ({
               </Tooltip>
             </div>
           </div>
-          <span className="dct-talents-pulse-primary talents-pulse-step-resume-textarea">
+          <span className="dct-talents-pulse-primary">
             Minimun: 50, Maximun: 2500
           </span>
           <Divider
@@ -198,27 +201,50 @@ const TalentsPulseStepOne = ({
                 size="large"
                 onChange={(e) => handleOnChangeStepOneSalary(e, "type")}
               >
-                <Option value={MONTH}>Net Mensuel</Option>
-                <Option value={YEAR}>Brut Annuel</Option>
+                <Option value={HOUR}>Taux Horaire Brut</Option>
+                <Option value={MONTH}>Taux Mensuel Brut</Option>
+                <Option value={YEAR}>Taux Annuel Brut</Option>
               </Select>
             </div>
-            <div className="col-md-4">
-              <label htmlFor="salaryRange">
-                Fourchette salaire
-                <span className="dct-talents-pulse-field-required">*</span>
-              </label>
-              <Slider
-                name="salaryRange"
-                onChange={(e) => handleOnChangeStepOneSalary(e, "amount")}
-                range
-                value={dct.salaryRange}
-                tooltip={{
-                  formatter:
-                    dct.salaryType === MONTH ? monthFormatter : yearFormatter,
-                }}
-                marks={dct.salaryType === MONTH ? monthMarks : yearMarks}
-              />
-            </div>
+            {dct.salaryType === HOUR ? (
+              <div className="col-md-4">
+                <label htmlFor="salaryHour">
+                  Tarif par heure (€)
+                  <span className="dct-talents-pulse-field-required">*</span>
+                </label>
+                <br />
+                <InputNumber
+                  name="salaryHour"
+                  style={{ width: "120px" }}
+                  size="large"
+                  value={dct.salaryHour}
+                  min={0}
+                  max={20}
+                  defaultValue={1}
+                  onChange={(e) => handleOnChangeStepOneSalary(e, "amount")}
+                />
+                <br />
+                <i className="dct-talents-pulse-primary">Max 20€/heure</i>
+              </div>
+            ) : (
+              <div className="col-md-4">
+                <label htmlFor="salaryRange">
+                  Fourchette salaire
+                  <span className="dct-talents-pulse-field-required">*</span>
+                </label>
+                <Slider
+                  name="salaryRange"
+                  onChange={(e) => handleOnChangeStepOneSalary(e, "range")}
+                  range
+                  value={dct.salaryRange}
+                  tooltip={{
+                    formatter:
+                      dct.salaryType === MONTH ? monthFormatter : yearFormatter,
+                  }}
+                  marks={dct.salaryType === MONTH ? monthMarks : yearMarks}
+                />
+              </div>
+            )}
             <div className="col-md-1 dct-talents-pulse-space-center">
               <Tooltip title="Save">
                 <Button
