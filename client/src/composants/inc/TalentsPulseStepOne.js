@@ -220,7 +220,7 @@ const TalentsPulseStepOne = ({
                   value={dct.salaryHour}
                   min={0}
                   max={20}
-                  defaultValue={1}
+                  defaultValue={0}
                   onChange={(e) => handleOnChangeStepOneSalary(e, "amount")}
                 />
                 <br />

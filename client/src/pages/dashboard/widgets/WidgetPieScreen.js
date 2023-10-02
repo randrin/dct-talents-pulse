@@ -35,8 +35,11 @@ const WidgetPieScreen = ({ dcts, expertises, unit }) => {
   // Init
   useEffect(() => {
     handleOnSetOptions();
-    handleOnGetData();
   }, [dcts]);
+
+  useEffect(() => {
+    handleOnGetData();
+  }, [labelsPie]);
 
   const optionsPie = {
     responsive: true,

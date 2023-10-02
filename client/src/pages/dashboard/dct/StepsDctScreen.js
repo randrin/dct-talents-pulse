@@ -197,6 +197,10 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnPrevious = () => {
@@ -205,6 +209,10 @@ const StepsDctScreen = ({ mode, userDct, handleOnCancelStepDct }) => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnChangeDct = (e) => {
