@@ -31,7 +31,7 @@ const TalentsPulseStepFiveDetail = ({
                 <td className="talents-pulse-td">
                   <span>
                     <EditFilled
-                      className="dct-talents-pulse-primary"
+                      className="dct-talents-pulse-secondary"
                       onClick={() => handleOnEditStepFive(index)}
                     />
                   </span>{" "}

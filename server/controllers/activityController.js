@@ -22,6 +22,7 @@ export const activityCreate = async (req, res) => {
       lastName,
       sector,
       profession,
+      professionUser,
       expNumber,
       nationality,
       email,
@@ -61,15 +62,19 @@ export const activityCreate = async (req, res) => {
           _id: sector,
         }).exec();
 
-        let expertiseDct = await Expertise.findById({
-          _id: profession,
-        }).exec();
+        let expertiseDct;
+        if(!!profession.length) {
+          expertiseDct = await Expertise.findById({
+            _id: profession,
+          }).exec();
+        }
 
         const { _id } = jwt.decode(token);
 
         let user = await User.findById({ _id }).exec();
         const dct = new Dct({
           sector: sectorDct,
+          expertiseUser: professionUser,
           expertise: expertiseDct,
           expNumber,
           nationality,

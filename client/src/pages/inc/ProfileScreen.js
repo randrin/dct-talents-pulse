@@ -30,6 +30,7 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import {
+  talentsPulseConvertToCapitalize,
   talentsPulseGetRoleIcon,
   talentsPulseGetStatusColor,
   talentsPulseGetToken,
@@ -260,8 +261,8 @@ const ProfileScreen = () => {
                       size={100}
                     >
                       <b>
-                        {firstName?.charAt(0)}
-                        {lastName?.charAt(0)}
+                        {firstName?.charAt(0).toUpperCase()}
+                        {lastName?.charAt(0).toUpperCase()}
                       </b>
                     </Avatar>
                     <Tooltip title="Ajouter une photo de profil">
@@ -308,14 +309,20 @@ const ProfileScreen = () => {
                 </Tag>
               </div>
               <div className="col-md-3">
-                <label htmlFor="createdAt" className="dct-talents-pulse-font-bold">
+                <label
+                  htmlFor="createdAt"
+                  className="dct-talents-pulse-font-bold"
+                >
                   Date de Naissance
                 </label>
                 <br />
                 <span>{moment(dateOfBorn).format(FORMAT_DATE)}</span>
               </div>
               <div className="col-md-3">
-                <label htmlFor="createdAt" className="dct-talents-pulse-font-bold">
+                <label
+                  htmlFor="createdAt"
+                  className="dct-talents-pulse-font-bold"
+                >
                   Membre depuis
                 </label>
                 <br />
@@ -331,7 +338,7 @@ const ProfileScreen = () => {
               Prénom
             </label>
             <Input
-              value={firstName}
+              value={talentsPulseConvertToCapitalize(firstName)}
               name="firstName"
               size="large"
               prefix={<UserOutlined />}
@@ -343,7 +350,7 @@ const ProfileScreen = () => {
               Nom
             </label>
             <Input
-              value={lastName}
+              value={talentsPulseConvertToCapitalize(lastName)}
               name="lastName"
               size="large"
               prefix={<UserOutlined />}
@@ -423,7 +430,10 @@ const ProfileScreen = () => {
             />
           </div>
           <div className="col-md-3">
-            <label htmlFor="phoneNumber" className="dct-talents-pulse-font-bold">
+            <label
+              htmlFor="phoneNumber"
+              className="dct-talents-pulse-font-bold"
+            >
               Numéro de téléphone
             </label>
             <Input
@@ -437,7 +447,10 @@ const ProfileScreen = () => {
         </div>
         <div className="row mt-4">
           <div className="col">
-            <label htmlFor="addressLine" className="dct-talents-pulse-font-bold">
+            <label
+              htmlFor="addressLine"
+              className="dct-talents-pulse-font-bold"
+            >
               Rue
             </label>
             <Input

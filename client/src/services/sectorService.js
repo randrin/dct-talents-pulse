@@ -5,6 +5,7 @@ import {
   TALENTS_PULSE_CREATE_SECTOR,
   TALENTS_PULSE_DELETE_SECTOR,
   TALENTS_PULSE_SECTORS,
+  TALENTS_PULSE_SECTOR_FIND_BY_ID,
   TALENTS_PULSE_UPDATE_SECTOR,
 } from "../utils/apiUrlUtils.js";
 import { ACTION_ADD } from "../utils/constants.js";
@@ -38,11 +39,14 @@ export const getListSectors = async () => {
 };
 
 export const sectorDelete = async (slug, token) => {
-  return await axios.delete(`${apiUrl.API_URL}${TALENTS_PULSE_DELETE_SECTOR}${slug}`, {
-    headers: {
-      token,
-    },
-  });
+  return await axios.delete(
+    `${apiUrl.API_URL}${TALENTS_PULSE_DELETE_SECTOR}${slug}`,
+    {
+      headers: {
+        token,
+      },
+    }
+  );
 };
 
 export const sectorEnableOrDisable = async (slug, token) => {
@@ -54,5 +58,11 @@ export const sectorEnableOrDisable = async (slug, token) => {
         token,
       },
     }
+  );
+};
+
+export const findSectorById = async (sectorId) => {
+  return await axios.get(
+    `${apiUrl.API_URL}${TALENTS_PULSE_SECTOR_FIND_BY_ID}${sectorId}`
   );
 };

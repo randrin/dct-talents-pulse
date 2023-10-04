@@ -47,7 +47,7 @@ const TalentsPulseStepSummary = ({
             {dct?.user?.firstName} {dct?.user?.lastName}
           </Paragraph>
           <Paragraph className="talents-pulse-step-summary-profession">
-            {dct?.expertise?.name}
+            {dct?.expertiseUser || dct?.expertise?.name}
           </Paragraph>
           <Paragraph className="talents-pulse-step-summary-experience-year">
             {dct?.expNumber} ans d'expériences

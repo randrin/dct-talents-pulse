@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Button,
+  Input,
   InputNumber,
   Select,
   Typography,
@@ -10,7 +11,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import AuthLeftScreen from "../../inc/AuthLeftScreen";
 import { getListExpertisesBySector } from "../../../services/expertiseService";
-import { getListSectors } from "../../../services/sectorService";
+import {
+  findSectorById,
+  getListSectors,
+} from "../../../services/sectorService";
 import { ACTION_ACTIVE } from "../../../utils/constants";
 import { ArrowLeftOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import {
@@ -31,10 +35,12 @@ const ProfileCompletedScreen = () => {
   const [api, contextHolder] = notification.useNotification();
   const [dct, setDct] = useState({
     sector: "",
+    expertiseUser: "",
     expertise: "",
     expNumber: 0,
     nationality: "France",
   });
+  const [sectorSelected, setSectorSelected] = useState({});
   const [expertises, setExpertises] = useState([]);
   const [sectors, setSectors] = useState([]);
   const [countries, setCountries] = useState([]);
@@ -43,7 +49,7 @@ const ProfileCompletedScreen = () => {
   // Destructing
   const { Title } = Typography;
   const { Option } = Select;
-  const { sector, expertise, expNumber, nationality } = dct;
+  const { sector, expertise, expertiseUser, expNumber, nationality } = dct;
 
   // Init
   useEffect(() => {
@@ -58,10 +64,30 @@ const ProfileCompletedScreen = () => {
   useEffect(() => {
     if (sector) {
       listExpertisesBySector();
+      handleOnGetSectorById();
     }
   }, [sector]);
 
   // Functions
+  const handleOnGetSectorById = async () => {
+    setDct({ ...dct, expertiseUser: "" });
+    await findSectorById(sector)
+      .then((res) => {
+        setSectorSelected(res.data.sector);
+      })
+      .catch((error) => {
+        console.log(
+          "ProfileCompletedScreen -> handleOnGetSectorById Error: ",
+          error.response
+        );
+        api.error({
+          message: "Erreur",
+          description: error.response.data.message || error.response.data.error,
+          placement: "topRight",
+        });
+      });
+  };
+
   const listExpertisesBySector = () => {
     getListExpertisesBySector(sector)
       .then((res) => {
@@ -121,13 +147,26 @@ const ProfileCompletedScreen = () => {
       });
   };
 
+  const handleOnConvertText = () => {
+    // Convert the sector user in capitalize letter
+    setDct({
+      ...dct,
+      expertiseUser: expertiseUser
+        .split(" ")
+        .map(
+          (element) => element.charAt(0).toLocaleUpperCase() + element.slice(1)
+        )
+        .join(" "),
+    });
+  };
+
   const profileForm = () => (
     <div className="dct-talents-pulse-form">
       <div className="container">
         <Title level={2} className="dct-talents-pulse-secondary text-left">
           Complètez votre profil
         </Title>
-        <div className="row">
+        <div className="row mt-5">
           <div className="col mb-4">
             <label htmlFor="sector">
               Pôle de compétences
@@ -157,28 +196,47 @@ const ProfileCompletedScreen = () => {
         <div className="row">
           <div className="col mb-4">
             <label htmlFor="expertise">
-              Votre Métier <span className="dct-talents-pulse-field-required">*</span>
+              Votre Métier{" "}
+              <span className="dct-talents-pulse-field-required">*</span>
             </label>
-            <Select
-              name="sector"
-              size="large"
-              showSearch
-              style={{ width: "100%" }}
-              placeholder="Selectionez un métier"
-              optionFilterProp="children"
-              value={expertise}
-              disabled={!expertises.length}
-              onChange={(e) => setDct({ ...dct, expertise: e })}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              {expertises.map((expertise, index) => (
-                <Option key={index} value={expertise._id}>
-                  {expertise.name}
-                </Option>
-              ))}
-            </Select>
+            {sectorSelected.code === "AU" ? (
+              <Input
+                size="large"
+                name="expertiseUser"
+                type="text"
+                placeholder="Précisez votre métier"
+                value={expertiseUser}
+                onChange={(e) =>
+                  setDct({
+                    ...dct,
+                    expertiseUser: e.target.value,
+                  })
+                }
+                onKeyDown={handleOnConvertText}
+              />
+            ) : (
+              <Select
+                name="sector"
+                size="large"
+                showSearch
+                style={{ width: "100%" }}
+                placeholder="Selectionez un métier"
+                optionFilterProp="children"
+                value={expertise}
+                disabled={!expertises.length}
+                onChange={(e) => setDct({ ...dct, expertise: e })}
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                {expertises.map((expertise, index) => (
+                  <Option key={index} value={expertise._id}>
+                    {expertise.name}
+                  </Option>
+                ))}
+              </Select>
+            )}
           </div>
         </div>
         <div className="row">
@@ -250,7 +308,12 @@ const ProfileCompletedScreen = () => {
               onClick={handleOnUpdateProfile}
               shape="round"
               size="large"
-              disabled={!!sector?.length && !!expertise?.length ? false : true}
+              disabled={
+                !!sector?.length &&
+                (!!expertise?.length || !!expertiseUser?.length)
+                  ? false
+                  : true
+              }
             >
               <CheckCircleOutlined /> Mettre à jour
             </Button>

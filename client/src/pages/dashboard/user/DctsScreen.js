@@ -105,8 +105,8 @@ const DctsScreen = () => {
               size={50}
             >
               <b>
-                {key?.user.firstName?.charAt(0)}
-                {key?.user.lastName?.charAt(0)}
+                {key?.user.firstName?.charAt(0).toUpperCase()}
+                {key?.user.lastName?.charAt(0).toUpperCase()}
               </b>
             </Avatar>
           )}
@@ -237,7 +237,7 @@ const DctsScreen = () => {
             email: dct.user?.email,
             country: dct.user?.country,
             sector: dct.sector?.name,
-            expertise: dct.expertise?.name,
+            expertise: dct?.expertiseUser || dct.expertise?.name,
             description: dct.description,
             skills: dct.skills,
             projectsDetail: dct.projectsDetail,
@@ -416,7 +416,7 @@ const DctsScreen = () => {
             email: dct.user?.email,
             country: dct.user?.country,
             sector: dct.sector?.name,
-            expertise: dct.expertise?.name,
+            expertise: dct.expertiseUser || dct.expertise?.name,
             description: dct.description,
             skills: dct.skills,
             projectsDetail: dct.projectsDetail,

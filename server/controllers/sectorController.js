@@ -59,12 +59,17 @@ export const sectorCreate = async (req, res) => {
 
 export const getListSectors = async (req, res) => {
   const listSectors = await Sector.find({})
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: 1 })
     .populate("postedBy");
   res.status(200).send({ listSectors });
 };
 
-export const getSectorBySlug = async (req, res) => {};
+export const getSectorById = async (req, res) => {
+  const sector = await Sector.findOne({ _id: req.params.sectorId })
+    .sort({ createdAt: -1 })
+    .populate("postedBy");
+  res.status(200).send({ sector });
+};
 
 export const sectorUpdate = async (req, res) => {
   try {

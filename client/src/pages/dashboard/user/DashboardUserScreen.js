@@ -186,7 +186,7 @@ const DashboardUserScreen = () => {
             key: (index + 1).toString(),
             _id: dct._id,
             sector: dct.sector.name,
-            expertise: dct.expertise.name,
+            expertise: dct.expertiseUser || dct.expertise.name,
             user: dct.user.firstName + " " + dct.user.lastName,
             email: dct.user.email,
             expNumber: dct.expNumber,

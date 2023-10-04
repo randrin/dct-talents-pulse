@@ -73,6 +73,10 @@ const LinguisticsScreen = () => {
   const handleOnAddLinguistic = () => {
     setShowBoxLinguistic(true);
     setShowAddBtn(false);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnSaveLinguistic = () => {

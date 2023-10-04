@@ -35,6 +35,7 @@ import {
   talentsPulseRemoveToken,
   isAdmin,
   isMember,
+  talentsPulseConvertToCapitalize,
 } from "../../utils";
 import {
   CREATED_DCT_TALENTS_PULSE,
@@ -97,7 +98,9 @@ const DashboardLayout = ({ defaultKey, children }) => {
 
   const items = [
     {
-      label: `${firstName} ${lastName}`,
+      label: `${talentsPulseConvertToCapitalize(
+        firstName
+      )} ${talentsPulseConvertToCapitalize(lastName)}`,
       key: KEY_FULLNAME,
       disabled: true,
     },
@@ -279,8 +282,8 @@ const DashboardLayout = ({ defaultKey, children }) => {
                     size={50}
                   >
                     <b>
-                      {firstName.charAt(0)}
-                      {lastName.charAt(0)}
+                      {firstName.charAt(0).toLocaleUpperCase()}
+                      {lastName.charAt(0).toLocaleUpperCase()}
                     </b>
                   </Avatar>
                 )}

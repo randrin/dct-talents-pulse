@@ -53,8 +53,8 @@ export const userCreate = async (req, res) => {
         message: `User with email ${email} already existed. Try another one !!!`,
       });
     const member = new User({
-      firstName,
-      lastName,
+      firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1),
+      lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1),
       pseudo: lastName.split(" ")[0] + "." + firstName.split(" ")[0],
       slug: slugify(lastName),
       email,

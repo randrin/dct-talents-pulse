@@ -196,6 +196,10 @@ const TalentsPulseStepFourth = ({
     handleOnInitDates();
     setDetailMode("");
     setIsNewProject(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnAddAchievement = () => {

@@ -63,6 +63,10 @@ const TalentsPulseStepTwo = ({
   const handleOnAddSkill = () => {
     setShowBoxSkill(true);
     setShowAddBtn(false);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnCancelSkill = () => {

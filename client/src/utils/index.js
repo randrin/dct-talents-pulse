@@ -57,6 +57,13 @@ export const talentsPulseGetRoleIcon = (status) => {
   }
 };
 
+export const talentsPulseConvertToCapitalize = (name) => {
+  return name
+    ?.split(" ")
+    .map((element) => element.charAt(0).toLocaleUpperCase() + element.slice(1))
+    .join(" ");
+};
+
 export const talentsPulseCalculDiffDate = (date) => {
   let start = new Date().getTime();
   let end = new Date(date).getTime();

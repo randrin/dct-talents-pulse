@@ -10,6 +10,7 @@ export const GENERATE_DCT = "/generate-dct";
 export const ALL_CANDIDATES = "/talents-pulse-candidates";
 export const TALENTS_PULSE_CREATE_SECTOR = "/talents-pulse-create-sector";
 export const TALENTS_PULSE_SECTORS = "/talents-pulse-sectors";
+export const TALENTS_PULSE_SECTOR_FIND_BY_ID = "/talents-pulse-sector/sectorId=";
 export const TALENTS_PULSE_SECTOR_FIND_BY_SLUG = "/talents-pulse-sector/slug=:slug";
 export const TALENTS_PULSE_UPDATE_SECTOR = "/talents-pulse-update-sector/";
 export const TALENTS_PULSE_DELETE_SECTOR = "/talents-pulse-delete-sector/";

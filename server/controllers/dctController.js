@@ -28,7 +28,7 @@ const templateFile = fs.readFileSync("dct-template.docx");
 
 export const dctCreate = async (req, res) => {
   try {
-    const { sector, expertise, expNumber, nationality } = req.body;
+    const { sector, expertise, expertiseUser, expNumber, nationality } = req.body;
     const token = req.headers.token;
 
     if (token) {
@@ -43,9 +43,12 @@ export const dctCreate = async (req, res) => {
           _id: sector,
         }).exec();
 
-        let expertiseDct = await Expertise.findById({
-          _id: expertise,
-        }).exec();
+        let expertiseDct;
+        if(!!expertise.length) {
+          expertiseDct = await Expertise.findById({
+            _id: expertise,
+          }).exec();
+        }
 
         const { _id } = jwt.decode(token);
 
@@ -53,6 +56,7 @@ export const dctCreate = async (req, res) => {
 
         const dct = new Dct({
           sector: sectorDct,
+          expertiseUser,
           expertise: expertiseDct,
           expNumber,
           nationality,
@@ -393,7 +397,8 @@ export const dctDownload = async (req, res) => {
       const data = {
         lastName: dct.user.lastName,
         firstName: dct.user.firstName,
-        profession: dct.expertise.name.toUpperCase(),
+        profession:
+          dct.expertiseUser.toUpperCase() || dct.expertise.name.toUpperCase(),
         matricule: dct.matricule,
         expNumber: dct.expNumber,
         salary: salaryFormat,

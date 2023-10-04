@@ -92,6 +92,10 @@ const TalentsPulseStepFive = ({
     setShowBoxFormation(true);
     setShowAddBtn(false);
     handleOnGetYearOfGraduation();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnSaveFormation = () => {

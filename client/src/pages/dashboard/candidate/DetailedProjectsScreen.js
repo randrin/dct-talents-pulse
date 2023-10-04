@@ -206,6 +206,10 @@ const DetailedProjectsScreen = () => {
     handleOnInitDates();
     setDetailMode("");
     setIsNewProject(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleOnAddAchievement = () => {

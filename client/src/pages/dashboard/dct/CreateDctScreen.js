@@ -31,7 +31,10 @@ import {
 } from "../../../utils/constants";
 import { getListCountriesFlags } from "../../../services/utilService";
 import DashboardLayout from "../DashboardLayout";
-import { getListSectors } from "../../../services/sectorService";
+import {
+  findSectorById,
+  getListSectors,
+} from "../../../services/sectorService";
 import { getListExpertisesBySector } from "../../../services/expertiseService";
 import { userFindByEmail } from "../../../services/authService";
 import { talentsPulseGetToken } from "../../../utils";
@@ -60,9 +63,11 @@ const CreateDctScreen = () => {
     nationality: "France",
     matricule: "",
     profession: "",
+    professionUser: "",
     sector: "",
     expNumber: 0,
   });
+  const [sectorSelected, setSectorSelected] = useState({});
   const [activity, setActivity] = useState({
     activityType: "",
     user: "",
@@ -84,6 +89,7 @@ const CreateDctScreen = () => {
     dateOfBorn,
     nationality,
     profession,
+    professionUser,
     sector,
     expNumber,
   } = candidate;
@@ -102,6 +108,7 @@ const CreateDctScreen = () => {
   useEffect(() => {
     if (sector) {
       listExpertisesBySector();
+      handleOnGetSectorById();
     }
   }, [sector]);
 
@@ -110,11 +117,28 @@ const CreateDctScreen = () => {
   }, [defaultDateOfBorn]);
 
   // Functions
+  const handleOnGetSectorById = async () => {
+    await findSectorById(sector)
+      .then((res) => {
+        setSectorSelected(res.data.sector);
+      })
+      .catch((error) => {
+        console.log(
+          "CreateDctScreen -> handleOnGetSectorById Error: ",
+          error.response
+        );
+        api.error({
+          message: "Erreur",
+          description: error.response.data.message || error.response.data.error,
+          placement: "topRight",
+        });
+      });
+  };
+
   const getListActivityMember = async () => {
     setLoading(true);
     await getListActivities(ACTIVITY_CREATE_DCT, talentsPulseGetToken())
       .then((res) => {
-        console.log(res);
         setActivity(res.data.listActivities[0]);
         setDctContinue(true);
       })
@@ -218,7 +242,6 @@ const CreateDctScreen = () => {
 
     await userFindByEmail({ email })
       .then((res) => {
-        console.log("userFindByEmail: ", res);
         if (activity) {
           if (res.status === 200 && email !== activity.dct.user.email) {
             api.error({
@@ -259,7 +282,7 @@ const CreateDctScreen = () => {
       !!lastName?.length &&
       !!firstName?.length &&
       !!email?.length &&
-      !!profession?.length &&
+      (!!profession?.length || !!professionUser?.length) &&
       !!country?.length &&
       !!nationality?.length &&
       !!sector?.length &&
@@ -339,6 +362,19 @@ const CreateDctScreen = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+  };
+
+  const handleOnConvertText = () => {
+    // Convert the sector user in capitalize letter
+    setCandidate({
+      ...candidate,
+      professionUser: professionUser
+        .split(" ")
+        .map(
+          (element) => element.charAt(0).toLocaleUpperCase() + element.slice(1)
+        )
+        .join(" "),
+    });
   };
 
   // Render
@@ -563,30 +599,47 @@ const CreateDctScreen = () => {
                     Votre Métier
                     <span className="dct-talents-pulse-field-required">*</span>
                   </label>
-                  <Select
-                    name="profession"
-                    size="large"
-                    showSearch
-                    style={{ width: "100%" }}
-                    placeholder="Selectionez un métier"
-                    optionFilterProp="children"
-                    value={profession}
-                    disabled={!expertises.length}
-                    onChange={(e) =>
-                      setCandidate({ ...candidate, profession: e })
-                    }
-                    filterOption={(input, option) =>
-                      option.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                    {expertises.map((expertise, index) => (
-                      <Option key={index} value={expertise._id}>
-                        {expertise.name}
-                      </Option>
-                    ))}
-                  </Select>
+                  {sectorSelected.code === "AU" ? (
+                    <Input
+                      size="large"
+                      name="expertiseUser"
+                      type="text"
+                      placeholder="Précisez votre métier"
+                      value={professionUser}
+                      onChange={(e) =>
+                        setCandidate({
+                          ...candidate,
+                          professionUser: e.target.value,
+                        })
+                      }
+                      onKeyDown={handleOnConvertText}
+                    />
+                  ) : (
+                    <Select
+                      name="profession"
+                      size="large"
+                      showSearch
+                      style={{ width: "100%" }}
+                      placeholder="Selectionez un métier"
+                      optionFilterProp="children"
+                      value={profession}
+                      disabled={!expertises.length}
+                      onChange={(e) =>
+                        setCandidate({ ...candidate, profession: e })
+                      }
+                      filterOption={(input, option) =>
+                        option.children
+                          .toLowerCase()
+                          .indexOf(input.toLowerCase()) >= 0
+                      }
+                    >
+                      {expertises.map((expertise, index) => (
+                        <Option key={index} value={expertise._id}>
+                          {expertise.name}
+                        </Option>
+                      ))}
+                    </Select>
+                  )}
                 </div>
               </div>
               <div className="row mb-4">

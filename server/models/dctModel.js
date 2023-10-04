@@ -9,10 +9,14 @@ const dctSchema = new mongoose.Schema(
       ref: "Sector",
       required: "Sector required",
     },
+    expertiseUser: {
+      type: String,
+      trim: true,
+      default: "",
+    },
     expertise: {
       type: ObjectId,
       ref: "Expertise",
-      required: "Expertise required",
     },
     matricule: {
       type: String,

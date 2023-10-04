@@ -70,12 +70,12 @@ const WidgetPieScreen = ({ dcts, expertises, unit }) => {
   const handleOnSetOptions = () => {
     setLabelsPie(
       expertises
-        ?.filter((expertise) => expertise.parent.code === unit)
+        ?.filter((expertise) => expertise?.parent.code === unit)
         .map((label) => label.name)
     );
     setBackgroundColor(
       expertises
-        ?.filter((expertise) => expertise.parent.code === unit)
+        ?.filter((expertise) => expertise?.parent.code === unit)
         .map((color) => color.colorRgb)
     );
   };
