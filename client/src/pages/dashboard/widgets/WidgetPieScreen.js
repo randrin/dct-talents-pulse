@@ -85,7 +85,7 @@ const WidgetPieScreen = ({ dcts, expertises, unit }) => {
     labelsPie?.map((label, index) => {
       dataArray.push(
         dcts?.filter(
-          (dct, j) => dct.expertise.name === label && dct.sector.code === unit
+          (dct, j) => dct?.expertise?.name === label && dct.sector.code === unit
         )?.length
       );
     });
