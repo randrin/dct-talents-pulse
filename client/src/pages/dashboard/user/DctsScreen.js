@@ -384,10 +384,10 @@ const DctsScreen = () => {
   const searched = (keyword) => (c) =>
     c.user?.firstName.toLowerCase().includes(keyword) ||
     c.user?.lastName.toLowerCase().includes(keyword) ||
-    c.matricule.toLowerCase().includes(keyword) ||
-    c.sector.toLowerCase().includes(keyword) ||
-    c.expertise.toLowerCase().includes(keyword) ||
-    c.email.toLowerCase().includes(keyword);
+    c?.expertiseUser.toLowerCase().includes(keyword) ||
+    c?.sector.toLowerCase().includes(keyword) ||
+    c?.expertise.toLowerCase().includes(keyword) ||
+    c?.email.toLowerCase().includes(keyword);
 
   const handleOnFilter = async (e, type) => {
     //setDcts(tmpDcts.filter((dct) => dct.sector === e));
